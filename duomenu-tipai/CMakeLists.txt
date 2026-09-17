@@ -3,4 +3,5 @@ project(duomenu_tipai)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(duomenu_tipai main.cpp)
+add_executable(duomenu_tipai main.cpp
+        2.cpp)
