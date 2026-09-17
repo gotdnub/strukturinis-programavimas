@@ -9,6 +9,12 @@ int main() {
     string grupe = "PI26";
     int kursas = 1;
     string programosPav = "Programu sistemos";
-    cout << "Pirmoji C++ programa";
+
+    cout << "Vardas: " << vardas << endl;
+    cout << "Pavarde: " << pavarde << endl;
+    cout << "Amzius: " << amzius << endl;
+    cout << "Grupe: " << grupe << endl;
+    cout << "Kursas: " << kursas << endl;
+    cout << "Programos Pav: " << programosPav << endl;
     return 0;
 }
