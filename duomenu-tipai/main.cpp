@@ -48,57 +48,78 @@ int main() {
 
 
 
-    int balance = 100;
-    int choice;
+    // int balance = 100;
+    // int choice;
+    //
+    // do {
+    //     cout<<"\n--- SASKAITOS MENIU ---\n";
+    //     cout<<"1. Perziureti balansa \n";
+    //     cout<<"2. Papildyti balansa \n";
+    //     cout<<"3. Atlikti mokejima \n";
+    //     cout<<"0. Baigti programa \n";
+    //     cout<<"Iveskite pasirinkima \n";
+    //     cin >> choice;
+    //
+    //     switch (choice) {
+    //         case 1:
+    //             cout << "Balansas: "<<balance<<" Eur\n";
+    //             break;
+    //         case 2: {
+    //             int amount;
+    //             cout <<"Papildymo suma: ";
+    //             cin >> amount;
+    //
+    //             if (amount > 0) {
+    //                 balance += amount;
+    //                 cout <<"Balansas papildytas. \n";
+    //             } else {
+    //                 cout <<"Neteisinga suma. Ivedama suma turi buti teigiama. \n";
+    //             }
+    //         break;
+    //         }
+    //         case 3: {
+    //             int amount;
+    //             cout << "Mokejimo suma";
+    //             cin >> amount;
+    //
+    //             if (amount <= 0 ) {
+    //                 cout <<"Neteisinga suma. \n";
+    //             } else if (amount > balance) {
+    //                 cout <<"Nepakankamas likutis balanse. /n";
+    //             } else {
+    //                 balance -= amount;
+    //                 cout <<"Mokejimas atlikta \n";
+    //             }
+    //             break;
+    //         }
+    //         case 0:
+    //             cout <<"Programa baigta. \n";
+    //             break;
+    //         default:
+    //             cout << "Tokio pasirinkimo nera";
+    //     }
+    // } while (choice != 0);
 
-    do {
-        cout<<"\n--- SASKAITOS MENIU ---\n";
-        cout<<"1. Perziureti balansa \n";
-        cout<<"2. Papildyti balansa \n";
-        cout<<"3. Atlikti mokejima \n";
-        cout<<"0. Baigti programa \n";
-        cout<<"Iveskite pasirinkima \n";
-        cin >> choice;
 
-        switch (choice) {
-            case 1:
-                cout << "Balansas: "<<balance<<" Eur\n";
-                break;
-            case 2: {
-                int amount;
-                cout <<"Papildymo suma: ";
-                cin >> amount;
 
-                if (amount > 0) {
-                    balance += amount;
-                    cout <<"Balansas papildytas. \n";
-                } else {
-                    cout <<"Neteisinga suma. Ivedama suma turi buti teigiama. \n";
-                }
-            break;
-            }
-            case 3: {
-                int amount;
-                cout << "Mokejimo suma";
-                cin >> amount;
+    // Studento pazymiu statistika
+    const int studentGradesNum = 5;
+    int grade;
+    int sum = 0;
+    int highestGrade = 0;
 
-                if (amount <= 0 ) {
-                    cout <<"Neteisinga suma. \n";
-                } else if (amount > balance) {
-                    cout <<"Nepakankamas likutis balanse. /n";
-                } else {
-                    balance -= amount;
-                    cout <<"Mokejimas atlikta \n";
-                }
-                break;
-            }
-            case 0:
-                cout <<"Programa baigta. \n";
-                break;
-            default:
-                cout << "Tokio pasirinkimo nera";
-        }
-    } while (choice != 0);
+    for (int i = 1; i<= studentGradesNum; i++) {
+        cout << "Iveskite "<<i<<" studento pazymi."<<endl;
+        cin >> grade;
+        sum += grade;
+
+        highestGrade = (grade > highestGrade) ? grade : highestGrade;
+    }
+
+    double averageGrade = static_cast<double>(sum) / studentGradesNum;
+    cout <<fixed << setprecision(2) <<"Pazymiu vidurkis" << averageGrade << endl;
+    cout << "Didziausias pazymys "<< highestGrade << endl;
+
 
     return 0;
 }
