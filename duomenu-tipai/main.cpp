@@ -1,20 +1,104 @@
+#include <iomanip>
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
-    string vardas = "Nikolas";
-    string pavarde = "Stonys";
-    int amzius = 19;
-    string grupe = "PI26";
-    int kursas = 1;
-    string programosPav = "Programu sistemos";
+   // int number;
+   // cout <<"iveskite teigiama skaiciu"<<endl;
+   // cin >>number;
+   // while (number <= 0) {
+   //     cout << "Klaida, skaicius nera teigiamas"<< endl;
+   //     cout <<"iveskite teigiama skaiciu"<< endl;
+   //     cin >>number;
+   // }
+   // cout <<"Ivestas sakicius yra: " <<number<< endl;
 
-    cout << "Vardas: " << vardas << endl;
-    cout << "Pavarde: " << pavarde << endl;
-    cout << "Amzius: " << amzius << endl;
-    cout << "Grupe: " << grupe << endl;
-    cout << "Kursas: " << kursas << endl;
-    cout << "Programos Pav: " << programosPav << endl;
+
+
+    // double savings = 100.0;
+    // const double target = 500.0;
+    // const double monthlyDeposit = 75.0;
+    // int month = 0;
+    //
+    // while (savings < target) {
+    //     month++;
+    //     savings += monthlyDeposit;
+    //     cout << month << " menuo "
+    //         <<fixed << setprecision(2)
+    //         <<savings <<" EUR"<<endl;
+    // }
+    //
+    // cout <<"Tikslas yra pasiektas per "<<month<<" menesius"<<endl;
+
+
+
+    // string password;
+    //
+    // do {
+    //     cout <<"Sukurkite slaptazodi bent 8 simboliu ilgumo"<<endl;
+    //     cin >> password;
+    //
+    //     if (password.length() < 8) {
+    //         cout << "Slaptazodis turi buti maziausiai 8 simboliu. "<<endl;
+    //     }
+    // } while (password.length() < 8);
+    //
+    // cout << "Slaptazodis yra priimtas"<<endl;
+
+
+
+    int balance = 100;
+    int choice;
+
+    do {
+        cout<<"\n--- SASKAITOS MENIU ---\n";
+        cout<<"1. Perziureti balansa \n";
+        cout<<"2. Papildyti balansa \n";
+        cout<<"3. Atlikti mokejima \n";
+        cout<<"0. Baigti programa \n";
+        cout<<"Iveskite pasirinkima \n";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Balansas: "<<balance<<" Eur\n";
+                break;
+            case 2: {
+                int amount;
+                cout <<"Papildymo suma: ";
+                cin >> amount;
+
+                if (amount > 0) {
+                    balance += amount;
+                    cout <<"Balansas papildytas. \n";
+                } else {
+                    cout <<"Neteisinga suma. Ivedama suma turi buti teigiama. \n";
+                }
+            break;
+            }
+            case 3: {
+                int amount;
+                cout << "Mokejimo suma";
+                cin >> amount;
+
+                if (amount <= 0 ) {
+                    cout <<"Neteisinga suma. \n";
+                } else if (amount > balance) {
+                    cout <<"Nepakankamas likutis balanse. /n";
+                } else {
+                    balance -= amount;
+                    cout <<"Mokejimas atlikta \n";
+                }
+                break;
+            }
+            case 0:
+                cout <<"Programa baigta. \n";
+                break;
+            default:
+                cout << "Tokio pasirinkimo nera";
+        }
+    } while (choice != 0);
+
     return 0;
 }
