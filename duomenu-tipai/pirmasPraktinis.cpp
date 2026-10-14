@@ -8,7 +8,7 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    int balance = 100;
+    cout << fixed << setprecision(2);
     const double GBP_Bendras  = 0.8729;
     const double GBP_Pirkti   = 0.8600;
     const double GBP_Parduoti = 0.9220;
@@ -32,7 +32,7 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1: {
+            case 1: { // palyginimas
                 int choice2;
                 do {
                     cout << "\n --- PASIRINKITE VALIUTĄ ---" << endl;
@@ -44,35 +44,151 @@ int main() {
 
                     switch (choice2) {
                         case 1:
-                            cout << "\n --- GBP ---" << endl;
-                            cout << "Bendras:   1 EUR = 0.8729 GBP" << endl;
-                            cout << "Pirkti:    1 EUR = 0.8600 GBP" << endl;
-                            cout << "Parduoti:  1 EUR = 0.9220 GBP" << endl;
+                            cout << "--- GBP ---" << endl;
+                            cout << "Bendras:   1 EUR = "<< GBP_Bendras <<" GBP" << endl;
+                            cout << "           1 GBP = " << 1 / GBP_Bendras << " EUR" << endl;
+                            cout << "Pirkti:    1 EUR = "<< GBP_Pirkti <<" GBP" << endl;
+                            cout << "Parduoti:  1 EUR = "<< GBP_Parduoti <<" GBP" << endl;
                             break;
 
                         case 2:
-                            cout << "\n --- USD ---" << endl;
-                            cout << "Bendras:   1 EUR = 1.1793 USD" << endl;
-                            cout << "Pirkti:    1 EUR = 1.1460 USD" << endl;
-                            cout << "Parduoti:  1 EUR = 1.2340 USD" << endl;
+                            cout << "--- USD ---" << endl;
+                            cout << "Bendras:   1 EUR = "<< USD_Bendras <<" USD" << endl;
+                            cout << "           1 USD = " << 1 / USD_Bendras << " EUR" << endl;
+                            cout << "Pirkti:    1 EUR = "<< USD_Pirkti <<" USD" << endl;
+                            cout << "Parduoti:  1 EUR = "<< USD_Parduoti <<" USD" << endl;
                             break;
 
                         case 3:
-                            cout << "\n --- INR ---" << endl;
-                            cout << "Bendras:   1 EUR = 104.6918 INR" << endl;
-                            cout << "Pirkti:    1 EUR = 101.3862 INR" << endl;
-                            cout << "Parduoti:  1 EUR = 107.8546 INR" << endl;
+                            cout << "--- INR ---" << endl;
+                            cout << "Bendras:   1 EUR = "<< INR_Bendras <<" INR" << endl;
+                            cout << "           1 INR = " << 1 / INR_Bendras << " EUR" << endl;
+                            cout << "Pirkti:    1 EUR = "<< INR_Pirkti <<" INR" << endl;
+                            cout << "Parduoti:  1 EUR = "<< INR_Parduoti <<" INR" << endl;
                             break;
 
-                        case 0: cout <<"\n Grįžtama" << endl;
+                        case 0:
+                            cout << "Grįžtama..." << endl;
                             break;
 
                         default:
-                            cout << "\n Tokio pasirinkimo nera";
+                            cout << "Tokio pasirinkimo nera" << endl;
+                            break;
                     }
 
                 }while (choice2 != 0);
+                break;
             }
+            case 2: { // pirkimas
+                int choice2;
+                    cout << "\n --- PASIRINKITE VALIUTĄ ---" << endl;
+                    cout<< "1. GBP" << endl;
+                    cout<< "2. USD" << endl;
+                    cout<< "3. INR" << endl;
+                    cout <<"0. Atgal" << endl;
+                    cin >> choice2;
+
+                if (choice2 < 0 || choice2 > 3 ) {
+                    cout << "Tokio pasirinkimo nera" << endl;
+                    break;
+                }
+
+                if (choice2 == 0) {
+                    cout << "Grįžtama..." << endl;
+                    break;
+                }
+
+                double suma;
+                cout << "Įveskite sumą EUR: ";
+                cin >> suma;
+
+                if (suma <= 0) {
+                    cout << "Klaida: suma turi būti teigiama." << endl;
+                    break;
+                }
+
+
+                switch (choice2) {
+                    case 1:
+                        cout << "Pradinė suma: " << suma << " EUR" << endl;
+                        cout << "Valiuta: GBP" << endl;
+                        cout << "Gausite: " << suma * GBP_Pirkti << " GBP" << endl;
+                        break;
+
+                    case 2:
+                        cout << "Pradinė suma: " << suma << " EUR" << endl;
+                        cout << "Valiuta: USD" << endl;
+                        cout << "Gausite: " << suma * USD_Pirkti << " USD" << endl;
+                        break;
+
+                    case 3:
+                        cout << "Pradinė suma: " << suma << " EUR" << endl;
+                        cout << "Valiuta: INR" << endl;
+                        cout << "Gausite: " << suma * INR_Pirkti << " INR" << endl;
+                        break;
+
+                }
+                break;
+            }
+
+            case 3: { // pardavimas
+                int choice2;
+                cout << "\n --- PASIRINKITE VALIUTĄ ---" << endl;
+                cout<< "1. GBP" << endl;
+                cout<< "2. USD" << endl;
+                cout<< "3. INR" << endl;
+                cout <<"0. Atgal" << endl;
+                cin >> choice2;
+
+                if (choice2 < 0 || choice2 > 3 ) {
+                    cout << "Tokio pasirinkimo nera" << endl;
+                    break;
+                }
+
+                if (choice2 == 0) {
+                    cout << "Grįžtama..." << endl;
+                    break;
+                }
+
+                double suma;
+                cout <<"Įveskite valiutos parduodamą sumą: ";
+                cin >> suma;
+
+                if (suma <= 0) {
+                    cout << "Klaida: suma turi būti teigiama." << endl;
+                    break;
+                }
+
+                switch (choice2) {
+                    case 1:
+                        cout << "Pradinė suma: " << suma << " GBP" << endl;
+                        cout << "Valiuta: GBP" << endl;
+                        cout << "Gausite: " << suma / GBP_Parduoti << " EUR" << endl;
+                        break;
+
+                    case 2:
+                        cout << "Pradinė suma: " << suma << " USD" << endl;
+                        cout << "Valiuta: USD" << endl;
+                        cout << "Gausite: " << suma / USD_Parduoti << " EUR" << endl;
+                        break;
+
+                    case 3:
+                        cout << "Pradinė suma: " << suma << " INR" << endl;
+                        cout << "Valiuta: INR" << endl;
+                        cout << "Gausite: " << suma / INR_Parduoti << " EUR" << endl;
+                        break;
+
+                }
+                break;
+
+            }
+            case 0:
+                cout << "Baigiama..." << endl;
+                break;
+
+            default:
+                cout << "Tokio pasirinkimo nera" << endl;
+                break;
         }
 
     } while (choice != 0);
